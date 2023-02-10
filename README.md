@@ -1,4 +1,7 @@
-HOW TO (spec 42Prague)
+HOW TO make MLX42 library working (spec 42Prague) 
+
+This might be handy in case you decide to use MLX42 in your project (so_long or FdF or fract-ol or any other)
+
 1. ask staff to run sudo apt
 ➜  ~ sudo apt update
 ➜  ~ sudo apt install build-essential libx11-dev libglfw3-dev libglfw3 xorg-dev 
