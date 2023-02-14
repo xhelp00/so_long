@@ -15,3 +15,7 @@ gcc test.c libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 other details here:
 https://github.com/codam-coding-college/MLX42
+
+##################################################################################################################################################3
+Compile with minilibx
+gcc main.c libmlx.a -L/usr/include/../lib -lXext -lX11 -lm -lbsd
