@@ -15,3 +15,19 @@ gcc test.c libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 other details here:
 https://github.com/codam-coding-college/MLX42
+
+*******************************************************
+1. Create STDIN Error Checker  - must have 2 STDIN Arguments, ./so_long and the Map with Extension .ber
+2. Create Map Checker 
+	1. - check that each Line has the Same Length 
+	2. - check that the Map is a Rectangle  
+	3. - check that a P, C, and E exists  
+	4. - check that there are Walls surrounding the Map  
+	5. - check that there are not any other Characters except P,C,E, 1 and 0;  
+3. Initialize MLX, Creating the Window  
+4. Designing and Finding the Images  
+5. Converting Images to .xml  
+6. Display the Pixel Art on the corresponding Map Coordinates  
+7. Mapping the Keys to the Game  
+8. Create the Rules  
+9. Free Allocated Memmory
