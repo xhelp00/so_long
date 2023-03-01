@@ -36,3 +36,13 @@ gcc main.c libmlx.a -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 7. Mapping the Keys to the Game  
 8. Create the Rules  
 9. Free Allocated Memmory
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+MLX42 compiled successfully on Mac (not M1)
+- followed steps on https://github.com/codam-coding-college/MLX42
+- when did cmake - B build got warning on missing glfw - even tho the cmake seemed to install it, it was missing
+- then install it manually by: brew install glfw
+- again:
+~ cmake -B build 
+~ cmake --build build -j4 
+- important is the flag -Iinclude -lglfw (works even without -framework Cocoa -framework OpenGL -framework IOKit)
