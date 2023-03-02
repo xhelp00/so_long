@@ -46,3 +46,4 @@ MLX42 compiled successfully on Mac (not M1)
 ~ cmake -B build 
 ~ cmake --build build -j4 
 - important is the flag -Iinclude -lglfw (works even without -framework Cocoa -framework OpenGL -framework IOKit)
+- make sure you have Xcode installed and updated
