@@ -47,3 +47,7 @@ MLX42 compiled successfully on Mac (not M1)
 ~ cmake --build build -j4 
 - important is the flag -Iinclude -lglfw (works even without -framework Cocoa -framework OpenGL -framework IOKit)
 - make sure you have Xcode installed and updated
+
+******************************************************
+MLX42 compile on Linux: cc test.c libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+MLX42 compile on Mac: cc test.c libmlx42.a -Iinclude -lglfw
