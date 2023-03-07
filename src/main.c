@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
-#include "include/MLX42/MLX42.h"
-#define WIDTH 512
-#define HEIGHT 512
+#include "../include/MLX42/MLX42.h"
+#define WIDTH 640
+#define HEIGHT 640
 
 static mlx_image_t* img;
 
@@ -35,7 +35,7 @@ int32_t	main(void)
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 		return(EXIT_FAILURE);
 
-	img = mlx_new_image(mlx, 128, 128);
+	img = mlx_new_image(mlx, 32, 32);
 	memset(img->pixels, 255, img->width * img->height * sizeof(int));
 	mlx_image_to_window(mlx, img, 0, 0);
 
