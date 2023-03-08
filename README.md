@@ -28,10 +28,11 @@ gcc main.c libmlx.a -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 	2. - check that the Map is a Rectangle  
 	3. - check that a P, C, and E exists  
 	4. - check that there are Walls surrounding the Map  
-	5. - check that there are not any other Characters except P,C,E, 1 and 0;  
+	5. - check that there are not any other Characters except P,C,E, 1 and 0;
+	6. - check that there is a valid path *consider flood-fill  
 3. Initialize MLX, Creating the Window  
 4. Designing and Finding the Images  
-5. Converting Images to .xml  
+5. Converting Images to xpm42 * xpm->xpm42 convertor is in MLX42 tools
 6. Display the Pixel Art on the corresponding Map Coordinates  
 7. Mapping the Keys to the Game  
 8. Create the Rules  
