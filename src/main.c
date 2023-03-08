@@ -42,7 +42,7 @@ int32_t	main(void)
 		return(EXIT_FAILURE);
 
 	// Try to load the file
-	xpm_t* xpm = mlx_load_xpm42("./goldCoin1.xpm42");
+	xpm_t* xpm = mlx_load_xpm42("./sprites/goldCoin/goldCoin1.xpm42");
 	if (!xpm)
 		error();
 
@@ -61,6 +61,8 @@ int32_t	main(void)
 	mlx_loop(mlx);
 
 	mlx_terminate(mlx);
+
+	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }
 
