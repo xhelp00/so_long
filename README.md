@@ -51,3 +51,7 @@ MLX42 compiled successfully on Mac (not M1)
 ******************************************************
 MLX42 compile on Linux: cc test.c libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 MLX42 compile on Mac: cc test.c libmlx42.a -Iinclude -lglfw
+******************************************************
+checking leaks in detail:
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./so_long
+
