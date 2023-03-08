@@ -12,6 +12,12 @@
 
 static mlx_image_t* img;
 
+static void error(void)
+{
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
 void hook(void* param)
 {
 	mlx_t* mlx = param;
@@ -35,8 +41,20 @@ int32_t	main(void)
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 		return(EXIT_FAILURE);
 
-	img = mlx_new_image(mlx, 32, 32);
-	memset(img->pixels, 255, img->width * img->height * sizeof(int));
+	// Try to load the file
+	xpm_t* xpm = mlx_load_xpm42("./goldCoin1.xpm42");
+	if (!xpm)
+		error();
+
+	img = mlx_new_image(mlx, 128, 128);
+
+	// Convert texture to a displayable image
+	img = mlx_texture_to_image(mlx, &xpm->texture);
+	if (!img)
+		error();
+
+//	default white square - setting each pixel to 255
+//	memset(img->pixels, 255, img->width * img->height * sizeof(int));
 	mlx_image_to_window(mlx, img, 0, 0);
 
 	mlx_loop_hook(mlx, &hook, mlx);
