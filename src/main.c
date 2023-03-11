@@ -42,7 +42,7 @@ int32_t	main(void)
 		return(EXIT_FAILURE);
 
 	// Try to load the file
-	xpm_t* xpm = mlx_load_xpm42("./sprites/goldCoin/goldCoin1.xpm42");
+	xpm_t* xpm = mlx_load_xpm42("./sprites/player/tile000.xpm42");
 	if (!xpm)
 		error();
 
@@ -55,7 +55,7 @@ int32_t	main(void)
 
 //	default white square - setting each pixel to 255
 //	memset(img->pixels, 255, img->width * img->height * sizeof(int));
-	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_image_to_window(mlx, img, 320, 320);
 
 	mlx_loop_hook(mlx, &hook, mlx);
 	mlx_loop(mlx);
