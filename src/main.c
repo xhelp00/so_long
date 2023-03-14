@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include "../include/MLX42/MLX42.h"
+#include "../include/so_long.h"
 #define WIDTH 640
 #define HEIGHT 640
 
@@ -34,9 +35,12 @@ void hook(void* param)
 		img->instances[0].x += 5;
 }
 
-int32_t	main(void)
+int32_t	main(int ac, char **av)
 {
-	mlx_t* mlx;
+	mlx_t*	mlx;
+	t_game	game;
+
+	check_arguments(ac, av, &game);
 
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 		return(EXIT_FAILURE);

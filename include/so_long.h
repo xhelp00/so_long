@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/08 14:05:04 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:53:05 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 # include "libft.h"
 # include <sys/errno.h>
 
+typedef struct s_game
+{
+	void	*mlx_ptr;
+	void	*game_ptr;
+	char	*mapArg;
+	int		w;
+	int		h;
+}			t_game;
 
+void	check_arguments(int ac, char **av, t_game *game);
+int		suffix_check(char *s);
 
 #endif
