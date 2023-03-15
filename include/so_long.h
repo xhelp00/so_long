@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/14 16:53:05 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:44:14 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,28 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "libft.h"
 # include <sys/errno.h>
+# include <fcntl.h>
+# include <stddef.h>
+
+typedef struct s_map
+{
+	int		w;
+	int		h;
+	char	**grid;
+}			t_map;
 
 typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*game_ptr;
-	char	*mapArg;
+	char	*map_arg;
 	int		w;
 	int		h;
+	t_map	map;
 }			t_game;
 
 void	check_arguments(int ac, char **av, t_game *game);
-int		suffix_check(char *s);
+//int		suffix_check(char *s);
+t_map	get_map(char *map);
 
 #endif

@@ -41,6 +41,9 @@ int32_t	main(int ac, char **av)
 	t_game	game;
 
 	check_arguments(ac, av, &game);
+	get_map(game.map_arg);
+	game.h = (game.map.h) * 32;
+	game.w = (game.map.w - 1) * 32;
 
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 		return(EXIT_FAILURE);
@@ -60,12 +63,9 @@ int32_t	main(int ac, char **av)
 //	default white square - setting each pixel to 255
 //	memset(img->pixels, 255, img->width * img->height * sizeof(int));
 	mlx_image_to_window(mlx, img, 320, 320);
-
 	mlx_loop_hook(mlx, &hook, mlx);
 	mlx_loop(mlx);
-
 	mlx_terminate(mlx);
-
 	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }
