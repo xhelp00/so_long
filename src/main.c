@@ -35,7 +35,7 @@ void hook(void* param)
 		img->instances[0].x += 5;
 }
 
-int32_t	main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	mlx_t*	mlx;
 	t_game	game;
