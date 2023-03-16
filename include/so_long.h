@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/15 16:44:14 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/16 09:12:17 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct s_game
 void	check_arguments(int ac, char **av, t_game *game);
 //int		suffix_check(char *s);
 t_map	get_map(char *map);
+void	whatsup(int i);
 
 #endif

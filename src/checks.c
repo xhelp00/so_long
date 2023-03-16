@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:59 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/15 13:18:03 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/16 09:04:44 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	check_arguments(int ac, char **av, t_game *game)
 {
 	if (ac > 2)
 	{
-		ft_printf("Too many arguments\n");
+		ft_printf("Error Message: Too many arguments.\n");
 		exit(0);
 	}
 	else if (ac == 1)
 	{
-		ft_printf("Too few arguments\n");
+		ft_printf("Error Message: Too few arguments.\n");
 		exit(0);
 	}
 	else if (suffix_check(av[1]) == 0)
 	{
-		ft_printf("Map file has to be .ber format\n");
+		ft_printf("Error Message: Map file has to be .ber format.\n");
 		exit(0);
 	}
-	game->map_arg =av[1];
+	game->map_arg = av[1];
 }
