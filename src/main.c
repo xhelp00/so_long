@@ -41,8 +41,9 @@ int	main(int ac, char **av)
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
-	check_arguments(ac, av, game);
-	get_map(game->map_arg);
+	check_arguments(ac, av, game); //init game at first - add structs for player etc, malloc and ending/free functions
+
+	get_map(game->map_arg); //consider changing type
 	game->h = (game->map.h) * 32;
 	game->w = (game->map.w - 1) * 32;
 	check_path(game, game->map_arg);
