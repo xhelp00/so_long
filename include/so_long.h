@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 14:44:56 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:30:45 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,17 @@ typedef struct s_map
 {
 	int		w;
 	int		h;
-	//textures
+	xpm_t			*floor_texture;
+	xpm_t			*wall_texture;
+	xpm_t			*exit_texture;
+	xpm_t			*open_exit_texture;
+	xpm_t			*collectable_texture;
+	mlx_image_t		*collectable_img;
+	mlx_image_t		*exit_img;
+	mlx_image_t		*open_exit_img;
+	mlx_image_t		*wall_img;
+	mlx_image_t		*floor_img;
+	
 }			t_map;
 
 typedef struct s_game
@@ -77,5 +87,6 @@ void	whatsup(int i);
 void	check_grid_symbols(t_game *game);
 void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
+void	load_game(t_game *g);
 
 #endif
