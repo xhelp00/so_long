@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:56:17 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 14:46:08 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:16:45 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	empty_game(t_game *game)
 	game->grid = (void *)0;
 	game->h = 0;
 	game->w = 0;
+	game->count_collect = 0;
+	game->count_exit = 0;
+	game->count_player = 0;
 	game->allowed_symbols = "PEC01B";
 }
 
