@@ -38,14 +38,15 @@ void hook(void* param)
 int	main(int ac, char **av)
 {
 	mlx_t*	mlx;
-	t_game	game;
+	t_game	*game;
 
-	check_arguments(ac, av, &game);
-	get_map(game.map_arg);
-	game.h = (game.map.h) * 32;
-	game.w = (game.map.w - 1) * 32;
-	check_path(&game, game.map_arg);
-	//load_game(&game);
+	game = malloc(sizeof(t_game));
+	check_arguments(ac, av, game);
+	get_map(game->map_arg);
+	game->h = (game->map.h) * 32;
+	game->w = (game->map.w - 1) * 32;
+	check_path(game, game->map_arg);
+	//load_game(game);
 
 
 
