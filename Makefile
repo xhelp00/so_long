@@ -8,7 +8,7 @@ RED		:= \033[31;1m
 GREEN	:= \033[32;1m
 RESET	:= \033[0m
 
-OBJ = obj/main.o obj/checks.o obj/map.o obj/error.o \
+OBJ = obj/main.o obj/checks.o obj/map.o obj/error.o obj/path_finder.o obj/utils.o\
 			
 MLX = lib/MLX42/libmlx42.a
 MLX_DIR = lib/MLX42/

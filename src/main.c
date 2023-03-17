@@ -44,6 +44,7 @@ int	main(int ac, char **av)
 	get_map(game.map_arg);
 	game.h = (game.map.h) * 32;
 	game.w = (game.map.w - 1) * 32;
+	check_path(&game, game.map_arg);
 
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 		return(EXIT_FAILURE);

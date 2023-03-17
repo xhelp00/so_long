@@ -6,22 +6,23 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:56:17 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/15 16:57:12 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:46:08 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	empty_map(t_map *map)
+void	empty_game(t_game *game)
 {
-	map->grid = (void *)0;
-	map->h = 0;
-	map->w = 0;
+	game->grid = (void *)0;
+	game->h = 0;
+	game->w = 0;
+	game->allowed_symbols = "PEC01B";
 }
 
-t_map	get_map(char *map)
+t_game	get_map(char *map)
 {
-	t_map	game_map;
+	t_game	game_map;
 	int		fd;
 	char 	*grid;
 	char 	*line;
@@ -29,7 +30,7 @@ t_map	get_map(char *map)
 	fd = open(map, O_RDONLY);
 	grid = ft_strdup("");
 	line = get_next_line(fd);
-	empty_map(&game_map);
+	empty_game(&game_map);
 	while (line != NULL)
 	{
 		grid = ft_strjoingnl(grid, line);
@@ -41,11 +42,9 @@ t_map	get_map(char *map)
 	game_map.grid = ft_split(grid, '\n');
 	if (game_map.grid[0])
 		game_map.w = ft_strlen(game_map.grid[0]);
-	//checks for map
+	check_grid_symbols(&game_map);
 	//free grid and line
-
 	ft_printf("%d\n%d\n", game_map.h, game_map.w); // test to see calculated dimensions
-
 	close(fd);
 	return (game_map);
 }
