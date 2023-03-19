@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:59 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 15:25:30 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/19 12:20:00 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ void	check_arguments(int ac, char **av, t_game *g)
 	g->map_arg = av[1];
 }
 
-void	check_around(t_game *g)
+void	check_around(t_map *map)
 {
 	int	i;
 	int j;
 
 	i = 0;
-	while (g->grid[i])
+	while (map->grid[i])
 	{
 		j = 0;
-		if (ft_strlen(g->grid[j]) != ft_strlen(g->grid[i]))
+		if (ft_strlen(map->grid[j]) != ft_strlen(map->grid[i]))
 			whatsup(1);
-		while (g->grid[i][j])
+		while (map->grid[i][j])
 		{
-			if (i == 0 || i == g->h - 1 || j == 0 || j == g->w - 1)
+			if (i == 0 || i == map->h - 1 || j == 0 || j == map->w - 1)
 			{
-				if (g->grid[i][j] != '1')
+				if (map->grid[i][j] != '1')
 					whatsup(4);
 			}
 			j++;
@@ -67,31 +67,31 @@ void	check_around(t_game *g)
 	}
 }
 
-void	check_grid_symbols(t_game *g)
+void	check_grid_symbols(t_map *map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (y < g->h)
+	while (y < map->h)
 	{
-		while (x < g->w)
+		while (x < map->w)
 		{
-			if (g->grid[y][x] == 'P')
-				g->count_player += 1;
-			if (g->grid[y][x] == 'E')
-				g->count_exit += 1;
-			if (g->grid[y][x] == 'C')
-				g->count_collect += 1;
-			if (!(ft_strchr(g->allowed_symbols, (int)g->grid[y][x])))
+			if (map->grid[y][x] == 'P')
+				map->count_player += 1;
+			if (map->grid[y][x] == 'E')
+				map->count_exit += 1;
+			if (map->grid[y][x] == 'C')
+				map->count_collect += 1;
+			if (!(ft_strchr(map->allowed_symbols, (int)map->grid[y][x])))
 				whatsup(2);
 			x += 1;
 		}
 		x = 0;
 		y += 1;
 	}
-	if (g->count_collect < 1 || g->count_player != 1 || g->count_exit != 1)
+	if (map->count_collect < 1 || map->count_player != 1 || map->count_exit != 1)
 		whatsup(5);
-	check_around(g);
+	check_around(map);
 }

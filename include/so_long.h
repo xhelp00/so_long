@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 17:30:45 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/19 12:17:48 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "libft.h"
-# include <sys/errno.h>
-# include <fcntl.h>
 # include <stddef.h>
 # include <stdbool.h>
+# include <fcntl.h>
 
 typedef struct s_position
 {
@@ -38,6 +37,12 @@ typedef struct s_map
 {
 	int		w;
 	int		h;
+	char			**grid;
+	char			*allowed_symbols;
+	int				count_steps;
+	int				count_collect;
+	int				count_exit;
+	int				count_player;
 	xpm_t			*floor_texture;
 	xpm_t			*wall_texture;
 	xpm_t			*exit_texture;
@@ -62,11 +67,8 @@ typedef struct s_game
 	int				w;
 	int				h;
 	t_map			map;
-	int				count_steps;
-	int				count_collect;
-	int				count_exit;
-	int				count_player;
-	char			*allowed_symbols;
+
+	
 }			t_game;
 
 typedef struct s_flood
@@ -82,9 +84,9 @@ typedef struct s_flood
 
 void	check_arguments(int ac, char **av, t_game *game);
 //int		suffix_check(char *s);
-t_game	get_map(char *map);
+t_map	get_map(char *map, t_game *game);
 void	whatsup(int i);
-void	check_grid_symbols(t_game *game);
+void	check_grid_symbols(t_map *game);
 void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
 void	load_game(t_game *g);

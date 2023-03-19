@@ -6,26 +6,29 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:56:17 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 15:16:45 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/19 12:19:23 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	empty_game(t_game *game)
+void	empty_game(t_map *map, t_game *game)
 {
 	game->grid = (void *)0;
+	map->grid = (void *)0;
 	game->h = 0;
 	game->w = 0;
-	game->count_collect = 0;
-	game->count_exit = 0;
-	game->count_player = 0;
-	game->allowed_symbols = "PEC01B";
+	map->h = 0;
+	map->w = 0;
+	map->count_collect = 0;
+	map->count_exit = 0;
+	map->count_player = 0;
+	map->allowed_symbols = "PEC01B";
 }
 
-t_game	get_map(char *map)
+t_map	get_map(char *map, t_game *game)
 {
-	t_game	game_map;
+	t_map	game_map;
 	int		fd;
 	char 	*grid;
 	char 	*line;
@@ -33,7 +36,7 @@ t_game	get_map(char *map)
 	fd = open(map, O_RDONLY);
 	grid = ft_strdup("");
 	line = get_next_line(fd);
-	empty_game(&game_map);
+	empty_game(&game_map, game);
 	while (line != NULL)
 	{
 		grid = ft_strjoingnl(grid, line);

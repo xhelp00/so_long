@@ -3,10 +3,6 @@
 // See README in the root project for more information.
 // -----------------------------------------------------------------------------
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <memory.h>
-#include "../include/MLX42/MLX42.h"
 #include "../include/so_long.h"
 #define WIDTH 640
 #define HEIGHT 640
@@ -37,13 +33,13 @@ void hook(void* param)
 
 int	main(int ac, char **av)
 {
-	mlx_t*	mlx;
+//	mlx_t*	mlx;
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
 	check_arguments(ac, av, game); //init game at first - add structs for player etc, malloc and ending/free functions
 
-	get_map(game->map_arg); //consider changing type
+	game->map = get_map(game->map_arg, game); //consider changing type
 	game->h = (game->map.h) * 32;
 	game->w = (game->map.w - 1) * 32;
 	check_path(game, game->map_arg);
@@ -51,7 +47,7 @@ int	main(int ac, char **av)
 
 
 
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	if (!(game->mlx = mlx_init(game->w, game->h, "MLX42", true)))
 		return(EXIT_FAILURE);
 
 	// Try to load the file
@@ -59,19 +55,19 @@ int	main(int ac, char **av)
 	if (!xpm)
 		error();
 
-	img = mlx_new_image(mlx, 128, 128);
+	img = mlx_new_image(game->mlx, 128, 128);
 
 	// Convert texture to a displayable image
-	img = mlx_texture_to_image(mlx, &xpm->texture);
+	img = mlx_texture_to_image(game->mlx, &xpm->texture);
 	if (!img)
 		error();
 
 //	default white square - setting each pixel to 255
 //	memset(img->pixels, 255, img->width * img->height * sizeof(int));
-	mlx_image_to_window(mlx, img, 320, 320);
-	mlx_loop_hook(mlx, &hook, mlx);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	mlx_image_to_window(game->mlx, img, 0, 0);
+	mlx_loop_hook(game->mlx, &hook, game->mlx);
+	mlx_loop(game->mlx);
+	mlx_terminate(game->mlx);
 	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }
