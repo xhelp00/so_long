@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/19 12:17:48 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:07:10 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ typedef struct s_position
 	int		x;
 	int		y;
 }			t_position;
+
+typedef struct s_idle_t
+{
+	xpm_t			*idle_texture[8];
+	mlx_image_t		*idle_img[8];
+	mlx_image_t		*idle;
+}			t_idle;
+
 
 typedef struct s_texture
 {
@@ -60,15 +68,15 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_texture_t	*player[3];
+	mlx_texture_t	*player;
+	mlx_image_t		*player_img;
+	t_idle			*idle;
 	void			*game_ptr;
 	char			*map_arg;
 	char			**grid;
 	int				w;
 	int				h;
 	t_map			map;
-
-	
 }			t_game;
 
 typedef struct s_flood
@@ -90,5 +98,6 @@ void	check_grid_symbols(t_map *game);
 void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
 void	load_game(t_game *g);
+void	init_idle_texture(t_game *game);
 
 #endif
