@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 
 	game->map = get_map(game->map_arg, game); //consider changing type
 	game->h = (game->map.h) * 32;
-	game->w = (game->map.w - 1) * 32;
+	game->w = (game->map.w) * 32;
 	check_path(game, game->map_arg);
 	//load_game(game); tbd
 	game->grid = game->map.grid;
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	//ft_memset((game)->img->pixels, 255, game->w * game->h * 4);
 	//mlx_image_to_window((game)->mlx, (game)->img, 0, 0);
 
-	mlx_image_to_window(game->mlx, game->idle->idle, 0, 0);
+	mlx_image_to_window(game->mlx, game->idle->idle, 32, 32);
 	//idle_animation(game); segfaults here
 	mlx_loop_hook(game->mlx, idle_animation, game);
 	mlx_loop_hook(game->mlx, hook, game);
