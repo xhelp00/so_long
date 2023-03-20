@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 15:01:04 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:31:17 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ typedef struct s_texture
 	xpm_t			*wall;
 	xpm_t			*floor;
 	xpm_t			*exit[2];
-	xpm_t			*enemy[3];
+	xpm_t			*enemy[4];
 	mlx_image_t		*exit_img[2];
 	mlx_image_t		*floor_img;
 	mlx_image_t		*wall_img;
+	mlx_image_t		*enemy_img[4];
 
 }			t_texture;
 
@@ -77,7 +78,8 @@ typedef struct s_game
 	mlx_image_t		*img;
 	mlx_texture_t	*player;
 	mlx_image_t		*player_img;
-	t_idle			*idle;
+	t_idle			*idle_p;
+	t_idle			*idle_e;
 	void			*game_ptr;
 	char			*map_arg;
 	char			**grid;
@@ -85,6 +87,8 @@ typedef struct s_game
 	int				h;
 	t_map			map;
 	t_texture		*tiles;
+	t_list			*collectible_list;
+	t_list			*enemy_list;
 }			t_game;
 
 typedef struct s_flood
@@ -113,5 +117,7 @@ void	init_tile_textures(t_game *game);
 void	draw_tiles(t_game *game);
 t_position	*get_component(char **map, char type);
 void	put_door(t_game *game);
+void	put_floor(t_game *game, char c, int width, int height);
+void	put_enemy(t_game *game);
 
 #endif

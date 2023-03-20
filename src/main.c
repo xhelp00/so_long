@@ -36,6 +36,7 @@ int	main(int ac, char **av)
 
 	draw_tiles(game);
 	put_door(game);
+	//put_enemy(game);
 	// Try to load the file
 	//xpm_t* xpm = mlx_load_xpm42("./sprites/player/tile000.xpm42");
 	//if (!xpm)
@@ -54,7 +55,7 @@ int	main(int ac, char **av)
 	//ft_memset((game)->img->pixels, 255, game->w * game->h * 4);
 	//mlx_image_to_window((game)->mlx, (game)->img, 0, 0);
 
-	mlx_image_to_window(game->mlx, game->idle->idle, 32, 32);
+	mlx_image_to_window(game->mlx, game->idle_p->idle, 32, 32);
 	//idle_animation(game); segfaults here
 	mlx_loop_hook(game->mlx, idle_animation, game);
 	mlx_loop_hook(game->mlx, hook, game);

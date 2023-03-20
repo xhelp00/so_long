@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 10:42:07 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:38:01 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	idle_animation(void *param)
 	static int		i;
 
 	game = param;
-	player = game->idle->idle_img;
+	player = game->idle_p->idle_img;
 	frames = 0;
 	i = 0;
 	if (frames == 0 || frames % 3 == 0)
@@ -45,13 +45,13 @@ void hook(void* param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
-		game->idle->idle->instances[0].y -= 5;
+		game->idle_p->idle->instances[0].y -= 5;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
-		game->idle->idle->instances[0].y += 5;
+		game->idle_p->idle->instances[0].y += 5;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		game->idle->idle->instances[0].x -= 5;
+		game->idle_p->idle->instances[0].x -= 5;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		game->idle->idle->instances[0].x += 5;
+		game->idle_p->idle->instances[0].x += 5;
 	
 }
 
