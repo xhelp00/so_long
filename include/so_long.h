@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/19 15:07:10 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 08:50:29 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
 void	load_game(t_game *g);
 void	init_idle_texture(t_game *game);
+void hook(void* param);
 
 #endif
