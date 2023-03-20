@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 13:30:44 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:01:04 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct s_texture
 {
 	xpm_t			*wall;
 	xpm_t			*floor;
-	xpm_t			*exit;
+	xpm_t			*exit[2];
 	xpm_t			*enemy[3];
+	mlx_image_t		*exit_img[2];
 	mlx_image_t		*floor_img;
 	mlx_image_t		*wall_img;
 
@@ -110,5 +111,7 @@ void	hook(void *param);
 void	idle_animation(void *param);
 void	init_tile_textures(t_game *game);
 void	draw_tiles(t_game *game);
+t_position	*get_component(char **map, char type);
+void	put_door(t_game *game);
 
 #endif

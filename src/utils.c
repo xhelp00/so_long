@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:05 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/17 17:51:17 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:59:58 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,28 @@ void	free_flood(t_flood *flood)
 {
 	free_array(flood->map);
 	ft_free(flood);
+}
+
+t_position	*get_component(char **map, char type)
+{
+	int			x;
+	int			y;
+	t_position	*pos;
+
+	y = -1;
+	pos = (t_position *)malloc(sizeof(t_position));
+	while (map[++y])
+	{
+		x = -1;
+		while (map[y][++x])
+		{
+			if (map[y][x] == type)
+			{
+				pos->x = x;
+				pos->y = y;
+				return (pos);
+			}
+		}
+	}
+	return (NULL);
 }

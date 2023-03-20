@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:12:24 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 13:28:31 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:46:29 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	load_tile_images(t_game *game)
 	tiles = (game)->tiles;
 	tiles->floor_img = mlx_texture_to_image(mlx, &tiles->floor->texture);
 	tiles->wall_img = mlx_texture_to_image(mlx, &tiles->wall->texture);
+	tiles->exit_img[0] = mlx_texture_to_image(mlx, &tiles->exit[0]->texture);
+	tiles->exit_img[1] = mlx_texture_to_image(mlx, &tiles->exit[1]->texture);
 }
 
 void	delete_tile_textures(t_game *game)
@@ -69,6 +71,9 @@ void	delete_tile_textures(t_game *game)
 	tiles = (game)->tiles;
 	mlx_delete_xpm42(tiles->floor);
 	mlx_delete_xpm42(tiles->wall);
+	mlx_delete_xpm42(tiles->exit[0]);
+	mlx_delete_xpm42(tiles->exit[1]);
+
 }
 
 void	init_tile_textures(t_game *game)
@@ -79,6 +84,8 @@ void	init_tile_textures(t_game *game)
 	tiles = (game)->tiles;
 	tiles->floor = mlx_load_xpm42("./sprites/ground/tile000.xpm42");
 	tiles->wall = mlx_load_xpm42("./sprites/wall/tile021.xpm42");
+	tiles->exit[0] = mlx_load_xpm42("./sprites/exit/closed.xpm42");
+	tiles->exit[1] = mlx_load_xpm42("./sprites/exit/open.xpm42");
 	load_tile_images(game);
 	delete_tile_textures(game);
 }

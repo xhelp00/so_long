@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:07:59 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 13:29:27 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:11:08 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,14 @@ void	draw_tiles(t_game *game)
 	}
 }
 
+void	put_door(t_game *game)
+{
+	t_texture		*image;
+	t_position		*exit;
+
+	exit = get_component((game)->grid, 'E');
+	image = (game)->tiles;
+	mlx_image_to_window((game)->mlx, image->exit_img[0],
+		exit->x * TILE, exit->y * TILE);
+	free(exit);
+}

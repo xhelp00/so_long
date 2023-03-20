@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 	init_tile_textures(game);
 
 	draw_tiles(game);
+	put_door(game);
 	// Try to load the file
 	//xpm_t* xpm = mlx_load_xpm42("./sprites/player/tile000.xpm42");
 	//if (!xpm)
