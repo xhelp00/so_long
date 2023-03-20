@@ -28,11 +28,13 @@ int	main(int ac, char **av)
 	game->w = (game->map.w - 1) * 32;
 	check_path(game, game->map_arg);
 	//load_game(game); tbd
-	
+	game->grid = game->map.grid;
 	if (!(game->mlx = mlx_init(game->w, game->h, "So Long!", true)))
 		return(EXIT_FAILURE);
 	init_idle_texture(game); //must go only after mlx_init otherwise SIGSEGV
-	
+	init_tile_textures(game);
+
+	draw_tiles(game);
 	// Try to load the file
 	//xpm_t* xpm = mlx_load_xpm42("./sprites/player/tile000.xpm42");
 	//if (!xpm)
@@ -47,8 +49,14 @@ int	main(int ac, char **av)
 	
 //	default white square - setting each pixel to 255
 //	memset(img->pixels, 255, img->width * img->height * sizeof(int));
+	
+	//ft_memset((game)->img->pixels, 255, game->w * game->h * 4);
+	//mlx_image_to_window((game)->mlx, (game)->img, 0, 0);
+
 	mlx_image_to_window(game->mlx, game->idle->idle, 0, 0);
-	mlx_loop_hook(game->mlx, &hook, game);
+	//idle_animation(game); segfaults here
+	mlx_loop_hook(game->mlx, idle_animation, game);
+	mlx_loop_hook(game->mlx, hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	system("leaks so_long");

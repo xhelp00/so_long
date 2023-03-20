@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 08:50:29 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 13:30:44 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# define SPRITE 64
+# define TILE 32
 
 typedef struct s_position
 {
@@ -35,10 +37,13 @@ typedef struct s_idle_t
 
 typedef struct s_texture
 {
-	mlx_texture_t	*wall;
-	mlx_texture_t	*floor;
-	mlx_texture_t	*exit;
-	mlx_texture_t	*enemy[3];
+	xpm_t			*wall;
+	xpm_t			*floor;
+	xpm_t			*exit;
+	xpm_t			*enemy[3];
+	mlx_image_t		*floor_img;
+	mlx_image_t		*wall_img;
+
 }			t_texture;
 
 typedef struct s_map
@@ -61,6 +66,7 @@ typedef struct s_map
 	mlx_image_t		*open_exit_img;
 	mlx_image_t		*wall_img;
 	mlx_image_t		*floor_img;
+
 	
 }			t_map;
 
@@ -77,6 +83,7 @@ typedef struct s_game
 	int				w;
 	int				h;
 	t_map			map;
+	t_texture		*tiles;
 }			t_game;
 
 typedef struct s_flood
@@ -99,6 +106,9 @@ void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
 void	load_game(t_game *g);
 void	init_idle_texture(t_game *game);
-void hook(void* param);
+void	hook(void *param);
+void	idle_animation(void *param);
+void	init_tile_textures(t_game *game);
+void	draw_tiles(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:12:24 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/19 15:25:19 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/20 13:28:31 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,36 @@ void	init_idle_texture(t_game *game)
 	idle->idle_texture[4] = NULL;
 	load_idle_images(game);
 	delete_idle_textures(game);
+}
+
+void	load_tile_images(t_game *game)
+{
+	t_texture	*tiles;
+	mlx_t		*mlx;
+
+	mlx = (game)->mlx;
+	tiles = (game)->tiles;
+	tiles->floor_img = mlx_texture_to_image(mlx, &tiles->floor->texture);
+	tiles->wall_img = mlx_texture_to_image(mlx, &tiles->wall->texture);
+}
+
+void	delete_tile_textures(t_game *game)
+{
+	t_texture	*tiles;
+
+	tiles = (game)->tiles;
+	mlx_delete_xpm42(tiles->floor);
+	mlx_delete_xpm42(tiles->wall);
+}
+
+void	init_tile_textures(t_game *game)
+{
+	t_texture	*tiles;
+
+	(game)->tiles = (t_texture *)malloc(sizeof(t_texture));
+	tiles = (game)->tiles;
+	tiles->floor = mlx_load_xpm42("./sprites/ground/tile000.xpm42");
+	tiles->wall = mlx_load_xpm42("./sprites/wall/tile021.xpm42");
+	load_tile_images(game);
+	delete_tile_textures(game);
 }
