@@ -26,6 +26,11 @@ int	main(int ac, char **av)
 	game->i = 0;
 	game->frames = 0;
 	game->counter_img = NULL;
+	game->collectible = (t_collectible *)malloc(sizeof(t_collectible));
+	if (!game->collectible)
+		return (-1);
+	game->col = 0;
+
 	check_path(game, game->map_arg);
 	//load_game(game); tbd
 	game->grid = game->map.grid;
@@ -34,8 +39,10 @@ int	main(int ac, char **av)
 	init_movements(game);
 	init_idle_texture(game); //must go only after mlx_init otherwise SIGSEGV
 	init_tile_textures(game);
+	load_collectibles(game);
 	
 	draw_tiles(game);
+	draw_collectibles(game);
 	add_player(game);
 
 	

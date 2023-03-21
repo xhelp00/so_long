@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 14:05:27 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:47:27 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,22 @@ typedef struct s_position
 	int		y;
 }			t_position;
 
+typedef struct s_collectible
+{
+	int				offset_x;
+	int				offset_y;
+	int				c_x;
+	int				c_y;
+	xpm_t			*collectible_t;
+	mlx_image_t		*collectible_img;
+}					t_collectible;
+
 typedef struct s_idle_t
 {
 	xpm_t			*idle_texture[8];
 	mlx_image_t		*idle_img[8];
 	mlx_image_t		*idle;
-}			t_idle;
+}					t_idle;
 
 
 typedef struct s_texture
@@ -46,7 +56,7 @@ typedef struct s_texture
 	mlx_image_t		*wall_img;
 	mlx_image_t		*enemy_img[4];
 
-}			t_texture;
+}					t_texture;
 
 typedef struct s_map
 {
@@ -68,9 +78,7 @@ typedef struct s_map
 	mlx_image_t		*open_exit_img;
 	mlx_image_t		*wall_img;
 	mlx_image_t		*floor_img;
-
-	
-}			t_map;
+}					t_map;
 
 typedef struct s_game
 {
@@ -94,7 +102,9 @@ typedef struct s_game
 	t_position		*movement[5];
 	int				i;
 	int				frames;
-}			t_game;
+	t_collectible	*collectible;
+	int				col;
+}					t_game;
 
 typedef struct s_flood
 {
@@ -105,29 +115,33 @@ typedef struct s_flood
 	int			p_x;
 	int			p_y;
 	bool		exit_found;
-}	t_flood;
+}				t_flood;
 
-void	check_arguments(int ac, char **av, t_game *game);
+void		check_arguments(int ac, char **av, t_game *game);
 //int		suffix_check(char *s);
-t_map	get_map(char *map, t_game *game);
-void	whatsup(int i);
-void	check_grid_symbols(t_map *game);
-void	check_path(t_game *g, char *input_file);
-void	free_flood(t_flood *flood);
-void	load_game(t_game *g);
-void	init_idle_texture(t_game *game);
-void hook(mlx_key_data_t key, void* param);
-void	idle_animation(void *param);
-void	init_tile_textures(t_game *game);
-void	draw_tiles(t_game *game);
+t_map		get_map(char *map, t_game *game);
+void		whatsup(int i);
+void		check_grid_symbols(t_map *game);
+void		check_path(t_game *g, char *input_file);
+void		free_flood(t_flood *flood);
+void		load_game(t_game *g);
+void		init_idle_texture(t_game *game);
+void 		hook(mlx_key_data_t key, void* param);
+void		idle_animation(void *param);
+void		init_tile_textures(t_game *game);
+void		draw_tiles(t_game *game);
 t_position	*get_component(char **map, char type);
-void	put_door(t_game *game);
-void	put_floor(t_game *game, char c, int width, int height);
-void	put_enemy(t_game *game);
-int		is_valid_move(t_game *game, t_position *movement);
-void	init_movements(t_game *game);
-void	function_move(t_game *game, t_position *position);
-void	add_player(t_game *game);
+void		put_door(t_game *game);
+void		put_floor(t_game *game, char c, int width, int height);
+void		put_enemy(t_game *game);
+int			is_valid_move(t_game *game, t_position *movement);
+void		init_movements(t_game *game);
+void		function_move(t_game *game, t_position *position);
+void		add_player(t_game *game);
+void		draw_collectibles(t_game *game);
+void		load_collectibles(t_game *game);
+void		put_collectible(t_game *game, char c, int x, int y);
+void		get_collectible_count(t_game *game);
 
 
 #endif

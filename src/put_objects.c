@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 11:33:06 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:47:12 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,22 @@ void	add_player(t_game *game)
 	//ft_memset((game)->player_img->pixels, 0, TILE * TILE * 4);
 	mlx_image_to_window((game)->mlx, (game)->idle_p->idle, posx, posy);
 	free(player_pos);
+}
+
+void	load_collectibles(t_game *game)
+{
+	game->collectible->offset_x = 0;
+	game->collectible->offset_y = 0;
+	game->collectible->c_x = 0;
+	game->collectible->c_y = 0;
+	game->collectible->collectible_t = mlx_load_xpm42
+		("sprites/goldCoin/goldCoin1.xpm42");
+	game->collectible->collectible_img = mlx_texture_to_image(game->mlx,
+			&game->collectible->collectible_t->texture);
+}
+
+void	put_collectible(t_game *game, char c, int x, int y)
+{
+	if (c == 'C')
+		mlx_image_to_window(game->mlx, game->collectible->collectible_img, x, y);
 }
