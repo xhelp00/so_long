@@ -5,14 +5,11 @@
 
 #include "../include/so_long.h"
 
-//static mlx_image_t* img;
-
 /* static void error(void)
 {
 	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 } */
-
 
 
 int	main(int ac, char **av)
@@ -26,39 +23,33 @@ int	main(int ac, char **av)
 	game->map = get_map(game->map_arg, game); //consider changing type
 	game->h = (game->map.h) * 32;
 	game->w = (game->map.w) * 32;
+	game->i = 0;
+	game->frames = 0;
 	check_path(game, game->map_arg);
 	//load_game(game); tbd
 	game->grid = game->map.grid;
 	if (!(game->mlx = mlx_init(game->w, game->h, "So Long!", true)))
 		return(EXIT_FAILURE);
+	init_movements(game);
 	init_idle_texture(game); //must go only after mlx_init otherwise SIGSEGV
 	init_tile_textures(game);
-
+	
 	draw_tiles(game);
+	add_player(game);
+
+	
 	put_door(game);
-	//put_enemy(game);
+	put_enemy(game);
+
 	// Try to load the file
 	//xpm_t* xpm = mlx_load_xpm42("./sprites/player/tile000.xpm42");
 	//if (!xpm)
 	//	error();
 
-	//img = mlx_new_image(game->mlx, 128, 128);
-	
-	// Convert texture to a displayable image
-	//img = mlx_texture_to_image(game->mlx, &xpm->texture);
-	//if (!img)
-	//	error();
-	
-//	default white square - setting each pixel to 255
-//	memset(img->pixels, 255, img->width * img->height * sizeof(int));
-	
-	//ft_memset((game)->img->pixels, 255, game->w * game->h * 4);
-	//mlx_image_to_window((game)->mlx, (game)->img, 0, 0);
-
-	mlx_image_to_window(game->mlx, game->idle_p->idle, 32, 32);
-	//idle_animation(game); segfaults here
-	mlx_loop_hook(game->mlx, idle_animation, game);
+	//idle_animation(game);
+	//mlx_loop_hook(game->mlx, idle_animation, game);
 	mlx_loop_hook(game->mlx, hook, game);
+	//mlx_loop_hook(game->mlx, idle_animation, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	system("leaks so_long");

@@ -10,7 +10,7 @@ RESET	:= \033[0m
 
 OBJ = obj/main.o obj/checks.o obj/map.o obj/error.o obj/path_finder.o obj/utils.o \
 			obj/so_long.o obj/assets.o obj/hooks.o obj/draw.o obj/put_objects.o \
-			
+			obj/move.o
 MLX = lib/MLX42/libmlx42.a
 MLX_DIR = lib/MLX42/
 LIBFT = obj/libft/libft.o

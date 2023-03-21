@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:12:24 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 16:46:43 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:26:36 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ void	load_tile_images(t_game *game)
 	tiles->wall_img = mlx_texture_to_image(mlx, &tiles->wall->texture);
 	tiles->exit_img[0] = mlx_texture_to_image(mlx, &tiles->exit[0]->texture);
 	tiles->exit_img[1] = mlx_texture_to_image(mlx, &tiles->exit[1]->texture);
+	tiles->enemy_img[0] = mlx_texture_to_image(mlx,&tiles->enemy[0]->texture);
+	tiles->enemy_img[1] = mlx_texture_to_image(mlx,&tiles->enemy[1]->texture);
+	tiles->enemy_img[2] = mlx_texture_to_image(mlx,&tiles->enemy[2]->texture);
+	tiles->enemy_img[3] = mlx_texture_to_image(mlx,&tiles->enemy[3]->texture);
 }
 
 void	delete_tile_textures(t_game *game)
@@ -93,6 +97,10 @@ void	delete_tile_textures(t_game *game)
 	mlx_delete_xpm42(tiles->wall);
 	mlx_delete_xpm42(tiles->exit[0]);
 	mlx_delete_xpm42(tiles->exit[1]);
+	mlx_delete_xpm42(tiles->enemy[0]);
+	mlx_delete_xpm42(tiles->enemy[1]);
+	mlx_delete_xpm42(tiles->enemy[2]);
+	mlx_delete_xpm42(tiles->enemy[3]);
 
 }
 
@@ -106,6 +114,10 @@ void	init_tile_textures(t_game *game)
 	tiles->wall = mlx_load_xpm42("./sprites/wall/tile021.xpm42");
 	tiles->exit[0] = mlx_load_xpm42("./sprites/exit/closed.xpm42");
 	tiles->exit[1] = mlx_load_xpm42("./sprites/exit/open.xpm42");
+	tiles->enemy[0] = mlx_load_xpm42("./sprites/bot/tile000.xpm42");
+	tiles->enemy[1] = mlx_load_xpm42("./sprites/bot/tile001.xpm42");
+	tiles->enemy[2] = mlx_load_xpm42("./sprites/bot/tile002.xpm42");
+	tiles->enemy[3] = mlx_load_xpm42("./sprites/bot/tile003.xpm42");
 	load_tile_images(game);
 	delete_tile_textures(game);
 }

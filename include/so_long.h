@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 17:31:17 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:57:39 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ typedef struct s_game
 	t_texture		*tiles;
 	t_list			*collectible_list;
 	t_list			*enemy_list;
+	t_position		*movement[5];
+	int				i;
+	int				frames;
 }			t_game;
 
 typedef struct s_flood
@@ -119,5 +122,10 @@ t_position	*get_component(char **map, char type);
 void	put_door(t_game *game);
 void	put_floor(t_game *game, char c, int width, int height);
 void	put_enemy(t_game *game);
+int		is_valid_move(t_game *game, t_position *movement);
+void	init_movements(t_game *game);
+void	function_move(t_game *game, t_position *position);
+void	add_player(t_game *game);
+
 
 #endif
