@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 13:11:29 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:38:09 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	idle_animation(void *param)
 	game->frames++;
 }
 
-void hook(void* param)
+void hook(mlx_key_data_t key, void* param)
 {
 	t_game* game = param;
 
@@ -50,15 +50,15 @@ void hook(void* param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		game->idle_p->idle->instances[0].x += 32; */
 
-	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 		mlx_close_window(game->mlx);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
+	if (key.key == MLX_KEY_UP && key.action == MLX_PRESS)
 		function_move(game, game->movement[0]);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
+	if (key.key == MLX_KEY_DOWN && key.action == MLX_PRESS)
 		function_move(game, game->movement[1]);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+	if (key.key ==MLX_KEY_LEFT && key.action == MLX_PRESS)
 		function_move(game, game->movement[3]);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	if (key.key == MLX_KEY_RIGHT && key.action == MLX_PRESS)
 		function_move(game, game->movement[2]);
 	 
 }

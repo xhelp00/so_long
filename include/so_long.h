@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 12:57:39 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:31:41 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	check_path(t_game *g, char *input_file);
 void	free_flood(t_flood *flood);
 void	load_game(t_game *g);
 void	init_idle_texture(t_game *game);
-void	hook(void *param);
+void hook(mlx_key_data_t key, void* param);
 void	idle_animation(void *param);
 void	init_tile_textures(t_game *game);
 void	draw_tiles(t_game *game);

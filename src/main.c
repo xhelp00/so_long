@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 
 	//idle_animation(game);
 	//mlx_loop_hook(game->mlx, idle_animation, game);
-	mlx_loop_hook(game->mlx, hook, game);
+	mlx_key_hook(game->mlx, hook, game);
 	//mlx_loop_hook(game->mlx, idle_animation, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
