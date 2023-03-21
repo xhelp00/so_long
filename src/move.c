@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 08:42:19 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 13:48:45 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:15:56 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,17 @@ void	function_move(t_game *game, t_position *position)
 	static int		move;
 
 	player_img = game->idle_p->idle;
+	game->counter = ft_itoa(move + 1);
 	if (is_valid_move(game, position))
 	{	
 		player_img->instances[0].y += position->y * TILE;
 		player_img->instances[0].x += position->x * TILE;
 		move++;
 		ft_printf("Moves: %d\n", move);
+		mlx_delete_image(game->mlx, game->counter_img);
+		game->counter_img = mlx_put_string(game->mlx, game->counter, 6, 6);
+		free(game->counter);
 	}
+	else
+		free(game->counter);
 }

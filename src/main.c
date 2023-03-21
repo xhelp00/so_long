@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	game->w = (game->map.w) * 32;
 	game->i = 0;
 	game->frames = 0;
+	game->counter_img = NULL;
 	check_path(game, game->map_arg);
 	//load_game(game); tbd
 	game->grid = game->map.grid;

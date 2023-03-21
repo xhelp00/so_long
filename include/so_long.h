@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 13:31:41 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:05:27 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	mlx_image_t		*counter_img;
 	mlx_texture_t	*player;
 	mlx_image_t		*player_img;
 	t_idle			*idle_p;
 	t_idle			*idle_e;
+	char			*counter;
 	void			*game_ptr;
 	char			*map_arg;
 	char			**grid;
