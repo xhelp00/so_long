@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 08:42:19 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 13:13:26 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:48:45 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	function_move(t_game *game, t_position *position)
 		player_img->instances[0].y += position->y * TILE;
 		player_img->instances[0].x += position->x * TILE;
 		move++;
+		ft_printf("Moves: %d\n", move);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 13:38:09 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:50:52 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void hook(mlx_key_data_t key, void* param)
 		game->idle_p->idle->instances[0].x += 32; */
 
 	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
+	{
 		mlx_close_window(game->mlx);
+		ft_printf("You have left the game.\n");
+	}
 	if (key.key == MLX_KEY_UP && key.action == MLX_PRESS)
 		function_move(game, game->movement[0]);
 	if (key.key == MLX_KEY_DOWN && key.action == MLX_PRESS)
