@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 15:49:54 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:24:37 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	idle_animation_p(void *param)
 	game = param;
 	player = game->idle_p->idle;
 	bot = game->idle_e->idle;
-
 	if (game->frames == 0 || game->frames % 3 == 0)
 	{
 		ft_memcpy(player->pixels, game->idle_p->idle_img[game->i]->pixels,
@@ -38,10 +37,11 @@ void	idle_animation_p(void *param)
 	game->frames++;
 }
 
-void hook(mlx_key_data_t key, void* param)
+void	hook(mlx_key_data_t key, void *param)
 {
-	t_game* game = param;
+	t_game	*game;
 
+	game = param;
 	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 	{
 		mlx_close_window(game->mlx);
@@ -53,7 +53,7 @@ void hook(mlx_key_data_t key, void* param)
 		function_move(game, game->movement[0]);
 	if (key.key == MLX_KEY_DOWN && key.action == MLX_PRESS)
 		function_move(game, game->movement[1]);
-	if (key.key ==MLX_KEY_LEFT && key.action == MLX_PRESS)
+	if (key.key == MLX_KEY_LEFT && key.action == MLX_PRESS)
 		function_move(game, game->movement[3]);
 	if (key.key == MLX_KEY_RIGHT && key.action == MLX_PRESS)
 		function_move(game, game->movement[2]);
@@ -62,8 +62,8 @@ void hook(mlx_key_data_t key, void* param)
 void	player_is_on_enemy(t_game *game)
 {
 	mlx_image_t	*player;
-	int				posx;
-	int				posy;
+	int			posx;
+	int			posy;
 
 	player = game->idle_p->idle;
 	posx = player->instances[0].x / TILE;

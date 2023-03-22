@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:59 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/19 12:20:00 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:51:04 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_arguments(int ac, char **av, t_game *g)
 void	check_around(t_map *map)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (map->grid[i])
@@ -72,11 +72,11 @@ void	check_grid_symbols(t_map *map)
 	int	x;
 	int	y;
 
-	x = 0;
-	y = 0;
-	while (y < map->h)
+	x = -1;
+	y = -1;
+	while (++y < map->h)
 	{
-		while (x < map->w)
+		while (++x < map->w)
 		{
 			if (map->grid[y][x] == 'P')
 				map->count_player += 1;
@@ -86,12 +86,11 @@ void	check_grid_symbols(t_map *map)
 				map->count_collect += 1;
 			if (!(ft_strchr(map->allowed_symbols, (int)map->grid[y][x])))
 				whatsup(2);
-			x += 1;
 		}
-		x = 0;
-		y += 1;
+		x = -1;
 	}
-	if (map->count_collect < 1 || map->count_player != 1 || map->count_exit != 1)
+	if (map->count_collect < 1 || map->count_player != 1
+		|| map->count_exit != 1)
 		whatsup(5);
 	check_around(map);
 }

@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 15:51:40 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:06:39 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_idle_t
 	mlx_image_t		*idle;
 }					t_idle;
 
-
 typedef struct s_texture
 {
 	xpm_t			*wall;
@@ -60,8 +59,8 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-	int		w;
-	int		h;
+	int				w;
+	int				h;
 	char			**grid;
 	char			*allowed_symbols;
 	int				count_steps;
@@ -128,7 +127,7 @@ void		check_path(t_game *g, char *input_file);
 void		free_flood(t_flood *flood);
 void		load_game(t_game *g);
 void		init_idle_texture(t_game *game);
-void 		hook(mlx_key_data_t key, void* param);
+void		hook(mlx_key_data_t key, void *param);
 void		idle_animation_p(void *param);
 void		init_tile_textures(t_game *game);
 void		draw_tiles(t_game *game);
@@ -150,5 +149,9 @@ void		win(t_game *game);
 void		free_chars(char **grid, char **line);
 void		player_is_on_enemy(t_game *game);
 void		loose(t_game *game);
+void		delete_tile_textures(t_game *game);
+void		load_idle_images2(t_game *game);
+void		load_idle_images1(t_game *game);
+void		add_player(t_game *game);
 
 #endif
