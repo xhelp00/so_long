@@ -6,22 +6,23 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 11:02:51 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:39:57 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	idle_animation(void *param)
+void	idle_animation_p(void *param)
 {
 	t_game			*game;
-	mlx_image_t		**player;
+	mlx_image_t		*player;
 
 	game = param;
-	player = game->idle_p->idle_img;
+	player = game->idle_p->idle;
+
 	if (game->frames == 0 || game->frames % 3 == 0)
 	{
-		ft_memcpy(player[0]->pixels, player[game->i]->pixels,
+		ft_memcpy(player->pixels, game->idle_p->idle_img[game->i]->pixels,
 			32 * 32 *4);
 		if (game->i == 3)
 		{

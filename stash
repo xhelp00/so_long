@@ -1,1 +1,23 @@
-		game->counter_img = mlx_put_string(game->mlx, ft_strjoin("Moves: ", game->counter), 6, 6);
+game->counter_img = mlx_put_string(game->mlx, ft_strjoin("Moves: ", game->counter), 6, 6);
+
+
+void	idle_animation(void *param)
+{
+	t_game			*game;
+	mlx_image_t		**player;
+
+	game = param;
+	player = game->idle_p->idle_img;
+	if (game->frames == 0 || game->frames % 3 == 0)
+	{
+		ft_memcpy(player[0]->pixels, player[game->i]->pixels,
+			32 * 32 *4);
+		if (game->i == 3)
+		{
+			game->frames = -1;
+			game->i = -1;
+		}
+		game->i++;
+	}
+	game->frames++;
+}
