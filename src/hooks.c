@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 16:24:37 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:38:41 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	idle_animation_p(void *param)
 			32 * 32 * 4);
 		ft_memcpy(bot->pixels, game->idle_e->idle_img[game->i]->pixels,
 			32 * 32 * 4);
+		usleep(80000);
 		if (game->i == 3)
 		{
 			game->frames = -1;
