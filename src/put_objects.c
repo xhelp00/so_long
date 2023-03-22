@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 09:57:43 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:49:22 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	put_enemy(t_game *game)
 
 	bot = get_component((game)->grid, 'B');
 	image = (game)->tiles;
-	mlx_image_to_window((game)->mlx, image->enemy_img[0],
-		bot->x * TILE, bot->y * TILE);
+	if (bot != NULL)
+		mlx_image_to_window((game)->mlx, image->enemy_img[0], bot->x * TILE, bot->y * TILE);
 	free(bot);
 } 
 
