@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 08:42:19 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 14:19:37 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:08:21 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	is_valid_move(t_game *game, t_position *movement)
 	player = game->idle_p->idle->instances;
 	posx = posx + player->x / TILE;
 	posy = posy + player->y / TILE;
+	if ((game->grid[posy][posx] == 'E' && !game->open))
+		return (0);
 	if (game->grid[posy][posx] != '1')
 		return (1);
 	return (0);
@@ -59,8 +61,9 @@ void	function_move(t_game *game, t_position *position)
 		move++;
 		ft_printf("Moves: %d\n", move);
 		mlx_delete_image(game->mlx, game->counter_img);
-		game->counter_img = mlx_put_string(game->mlx, ft_strjoin("Moves: ", game->counter), 6, 6);
+		game->counter_img = mlx_put_string(game->mlx, game->counter, 6, 6);
 		free(game->counter);
+		player_is_on_colectible(game);
 	}
 	else
 		free(game->counter);

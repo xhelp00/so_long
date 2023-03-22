@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 17:47:27 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:01:09 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# define SPRITE 64
 # define TILE 32
 
 typedef struct s_position
@@ -104,6 +103,8 @@ typedef struct s_game
 	int				frames;
 	t_collectible	*collectible;
 	int				col;
+	int				collected;
+	int				open;
 }					t_game;
 
 typedef struct s_flood
@@ -142,6 +143,9 @@ void		draw_collectibles(t_game *game);
 void		load_collectibles(t_game *game);
 void		put_collectible(t_game *game, char c, int x, int y);
 void		get_collectible_count(t_game *game);
-
+void		player_is_on_colectible(t_game *game);
+void		collect(t_game *game, int posx, int posy);
+void		win(t_game *game);
+void		free_chars(char **grid, char **line);
 
 #endif

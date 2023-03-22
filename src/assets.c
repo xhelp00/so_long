@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:12:24 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 10:26:36 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:02:07 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	delete_tile_textures(t_game *game)
 	mlx_delete_xpm42(tiles->enemy[1]);
 	mlx_delete_xpm42(tiles->enemy[2]);
 	mlx_delete_xpm42(tiles->enemy[3]);
-
 }
 
 void	init_tile_textures(t_game *game)

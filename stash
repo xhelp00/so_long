@@ -1,0 +1,1 @@
+		game->counter_img = mlx_put_string(game->mlx, ft_strjoin("Moves: ", game->counter), 6, 6);

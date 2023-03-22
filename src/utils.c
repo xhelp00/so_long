@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:05 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/20 14:59:58 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:01:11 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	free_flood(t_flood *flood)
 {
 	free_array(flood->map);
 	ft_free(flood);
+}
+
+void	free_chars(char **grid, char **line)
+{
+	free(*grid);
+	free(*line);
 }
 
 t_position	*get_component(char **map, char type)

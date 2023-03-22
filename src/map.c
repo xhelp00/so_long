@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:56:17 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/19 12:19:23 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:14:27 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_map	get_map(char *map, t_game *game)
 {
 	t_map	game_map;
 	int		fd;
-	char 	*grid;
-	char 	*line;
+	char	*grid;
+	char	*line;
 
 	fd = open(map, O_RDONLY);
 	grid = ft_strdup("");
@@ -40,7 +40,6 @@ t_map	get_map(char *map, t_game *game)
 	while (line != NULL)
 	{
 		grid = ft_strjoingnl(grid, line);
-		ft_printf("%s", line); //test to see loaded map * remove
 		free(line);
 		line = get_next_line(fd);
 		game_map.h++;
@@ -49,8 +48,7 @@ t_map	get_map(char *map, t_game *game)
 	if (game_map.grid[0])
 		game_map.w = ft_strlen(game_map.grid[0]);
 	check_grid_symbols(&game_map);
-	//free grid and line
-	ft_printf("%d\n%d\n", game_map.h, game_map.w); // test to see calculated dimensions
+	free_chars(&grid, &line);
 	close(fd);
 	return (game_map);
 }

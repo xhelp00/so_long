@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 17:50:25 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:02:51 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	idle_animation(void *param)
 	if (game->frames == 0 || game->frames % 3 == 0)
 	{
 		ft_memcpy(player[0]->pixels, player[game->i]->pixels,
-			SPRITE * SPRITE *4);
+			32 * 32 *4);
 		if (game->i == 3)
 		{
 			game->frames = -1;
@@ -37,25 +37,12 @@ void hook(mlx_key_data_t key, void* param)
 {
 	t_game* game = param;
 
-	//idle_animation(game);
-
-	/* if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(game->mlx);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
-		game->idle_p->idle->instances[0].y -= 32;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
-		game->idle_p->idle->instances[0].y += 32;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		game->idle_p->idle->instances[0].x -= 32;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		game->idle_p->idle->instances[0].x += 32; */
-
 	if (key.key == MLX_KEY_ESCAPE && key.action == MLX_PRESS)
 	{
 		mlx_close_window(game->mlx);
 		ft_printf("You have left the game.\n");
 		get_collectible_count(game);
-		ft_printf("Collectibles: %d\n", game->col);
+		ft_printf("Collectibles left: %d\n", game->col);
 	}
 	if (key.key == MLX_KEY_UP && key.action == MLX_PRESS)
 		function_move(game, game->movement[0]);
@@ -65,6 +52,5 @@ void hook(mlx_key_data_t key, void* param)
 		function_move(game, game->movement[3]);
 	if (key.key == MLX_KEY_RIGHT && key.action == MLX_PRESS)
 		function_move(game, game->movement[2]);
-	 
 }
 

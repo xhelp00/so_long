@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/21 17:47:12 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:57:43 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	put_door(t_game *game)
 
 	exit = get_component((game)->grid, 'E');
 	image = (game)->tiles;
+	mlx_image_to_window((game)->mlx, image->exit_img[1],
+		exit->x * TILE, exit->y * TILE);
 	mlx_image_to_window((game)->mlx, image->exit_img[0],
 		exit->x * TILE, exit->y * TILE);
 	free(exit);
