@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"mlx42.h": "c",
-		"errno.h": "c",
-		"so_long.h": "c"
-	}
-}
