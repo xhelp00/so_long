@@ -48,6 +48,7 @@ int	main(int ac, char **av)
 	put_door(game);
 	put_enemy(game);
 	mlx_loop_hook(game->mlx, idle_animation_p, game);
+	//mlx_loop_hook(game->mlx, idle_animation_e, game);
 	mlx_key_hook(game->mlx, hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);

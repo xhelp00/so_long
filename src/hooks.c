@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:05:41 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 14:39:57 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:08:43 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ void	idle_animation_p(void *param)
 {
 	t_game			*game;
 	mlx_image_t		*player;
+	mlx_image_t		*bot;
 
 	game = param;
 	player = game->idle_p->idle;
+	bot = game->idle_e->idle;
 
 	if (game->frames == 0 || game->frames % 3 == 0)
 	{
 		ft_memcpy(player->pixels, game->idle_p->idle_img[game->i]->pixels,
+			32 * 32 *4);
+		ft_memcpy(bot->pixels, game->idle_e->idle_img[game->i]->pixels,
 			32 * 32 *4);
 		if (game->i == 3)
 		{
@@ -55,3 +59,24 @@ void hook(mlx_key_data_t key, void* param)
 		function_move(game, game->movement[2]);
 }
 
+/* void	idle_animation_e(void *param)
+{
+	t_game			*game;
+	mlx_image_t		*bot;
+
+	game = param;
+	bot = game->idle_e->idle;
+
+	if (game->frames == 0 || game->frames % 3 == 0)
+	{
+		ft_memcpy(bot->pixels, game->idle_e->idle_img[game->i]->pixels,
+			32 * 32 *4);
+		if (game->i == 3)
+		{
+			game->frames = -1;
+			game->i = -1;
+		}
+		game->i++;
+	}
+	game->frames++;
+} */

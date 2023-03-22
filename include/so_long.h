@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 14:40:19 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:05:39 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_collectible
 	int				c_y;
 	xpm_t			*collectible_t;
 	mlx_image_t		*collectible_img;
+	mlx_image_t		*idle;
 }					t_collectible;
 
 typedef struct s_idle_t
@@ -147,5 +148,7 @@ void		player_is_on_colectible(t_game *game);
 void		collect(t_game *game, int posx, int posy);
 void		win(t_game *game);
 void		free_chars(char **grid, char **line);
+void		idle_animation_e(void *param);
+
 
 #endif

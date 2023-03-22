@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 13:49:22 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:12:06 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	put_enemy(t_game *game)
 	bot = get_component((game)->grid, 'B');
 	image = (game)->tiles;
 	if (bot != NULL)
-		mlx_image_to_window((game)->mlx, image->enemy_img[0], bot->x * TILE, bot->y * TILE);
+		mlx_image_to_window((game)->mlx, game->idle_e->idle, bot->x * TILE, bot->y * TILE);
 	free(bot);
 } 
 
@@ -66,14 +66,26 @@ void	add_player(t_game *game)
 
 void	load_collectibles(t_game *game)
 {
-	game->collectible->offset_x = 0;
-	game->collectible->offset_y = 0;
 	game->collectible->c_x = 0;
 	game->collectible->c_y = 0;
 	game->collectible->collectible_t = mlx_load_xpm42
 		("sprites/goldCoin/goldCoin1.xpm42");
-	game->collectible->collectible_img = mlx_texture_to_image(game->mlx,
-			&game->collectible->collectible_t->texture);
+	game->collectible->collectible_img = mlx_texture_to_image(game->mlx, 
+		&game->collectible->collectible_t->texture);
+	/* game->collectible->collectible_t[1] = mlx_load_xpm42
+		("sprites/goldCoin/goldCoin2.xpm42");
+	game->collectible->collectible_img[1] = mlx_texture_to_image(game->mlx, 
+		&game->collectible->collectible_t[1]->texture);
+	game->collectible->collectible_t[2] = mlx_load_xpm42
+		("sprites/goldCoin/goldCoin3.xpm42");
+	game->collectible->collectible_img[2] = mlx_texture_to_image(game->mlx, 
+		&game->collectible->collectible_t[2]->texture);
+	game->collectible->collectible_t[3] = mlx_load_xpm42
+		("sprites/goldCoin/goldCoin4.xpm42");
+	game->collectible->collectible_img[3] = mlx_texture_to_image(game->mlx, 
+		&game->collectible->collectible_t[3]->texture); */
+	game->collectible->idle = mlx_texture_to_image(game->mlx, 
+		&game->collectible->collectible_t->texture);
 }
 
 void	put_collectible(t_game *game, char c, int x, int y)
