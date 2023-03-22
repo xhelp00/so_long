@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 08:42:19 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 13:42:04 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:50:56 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	function_move(t_game *game, t_position *position)
 		game->counter_img = mlx_put_string(game->mlx, game->counter, 7, game->h - 22);
 		free(game->counter);
 		player_is_on_colectible(game);
+		player_is_on_enemy(game);
 	}
 	else
 		free(game->counter);

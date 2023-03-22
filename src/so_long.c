@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:00 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 11:02:13 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:17:08 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ void	collect(t_game *game, int posx, int posy)
 
 void	win(t_game *game)
 {
-	ft_printf("Game complete, you win! %d coins collected.\n", game->collected);
+	ft_printf("Game complete, YOU WIN! %d coins collected.\n", game->collected);
+	ft_printf("\n+-------------------------------------------------+\n");
+	ft_printf("+  Thank you for playing my first game!! <3  <3   +\n");
+	ft_printf("+-------------------------------------------------+\n");
+	mlx_close_window(game->mlx);
+}
+
+void	loose(t_game *game)
+{
+	ft_printf("GAME OVER! %d coins collected before you died by horrible death..\n", game->collected);
 	mlx_close_window(game->mlx);
 }

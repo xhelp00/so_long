@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 15:12:06 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:24:04 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	add_player(t_game *game)
 	player_pos = get_component((game)->grid, 'P');
 	posx = player_pos->x * TILE;
 	posy = player_pos->y * TILE;
-	//(game)->idle_p->idle = mlx_new_image((game)->mlx, TILE, TILE);
-	//ft_memset((game)->player_img->pixels, 0, TILE * TILE * 4);
 	mlx_image_to_window((game)->mlx, (game)->idle_p->idle, posx, posy);
 	free(player_pos);
 }
