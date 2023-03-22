@@ -6,7 +6,7 @@
 /*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:32:39 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 17:06:46 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:51:59 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	put_door(t_game *game)
 
 void	put_enemy(t_game *game)
 {
-	t_texture		*image;
 	t_position		*bot;
 
 	bot = get_component((game)->grid, 'B');
-	image = (game)->tiles;
 	if (bot != NULL)
 		mlx_image_to_window((game)->mlx, game->idle_e->idle,
 			bot->x * TILE, bot->y * TILE);
