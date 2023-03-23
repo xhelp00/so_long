@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phelebra <xhelp00@gmail.com>               +#+  +:+       +#+        */
+/*   By: phelebra <phelebra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:18:14 by phelebra          #+#    #+#             */
-/*   Updated: 2023/03/22 17:06:39 by phelebra         ###   ########.fr       */
+/*   Updated: 2023/03/23 08:45:01 by phelebra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_position
 
 typedef struct s_collectible
 {
-	int				offset_x;
-	int				offset_y;
+/* 	int				offset_x;
+	int				offset_y; */
 	int				c_x;
 	int				c_y;
 	xpm_t			*collectible_t;
@@ -67,16 +67,6 @@ typedef struct s_map
 	int				count_collect;
 	int				count_exit;
 	int				count_player;
-	xpm_t			*floor_texture;
-	xpm_t			*wall_texture;
-	xpm_t			*exit_texture;
-	xpm_t			*open_exit_texture;
-	xpm_t			*collectable_texture;
-	mlx_image_t		*collectable_img;
-	mlx_image_t		*exit_img;
-	mlx_image_t		*open_exit_img;
-	mlx_image_t		*wall_img;
-	mlx_image_t		*floor_img;
 }					t_map;
 
 typedef struct s_game
@@ -96,8 +86,6 @@ typedef struct s_game
 	int				h;
 	t_map			map;
 	t_texture		*tiles;
-	t_list			*collectible_list;
-	t_list			*enemy_list;
 	t_position		*movement[5];
 	int				i;
 	int				frames;
@@ -119,7 +107,6 @@ typedef struct s_flood
 }				t_flood;
 
 void		check_arguments(int ac, char **av, t_game *game);
-//int		suffix_check(char *s);
 t_map		get_map(char *map, t_game *game);
 void		whatsup(int i);
 void		check_grid_symbols(t_map *game);
