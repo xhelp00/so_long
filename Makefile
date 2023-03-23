@@ -34,6 +34,9 @@ obj/%.o: src/%.c
 	$(CC) -g -Wall -Wextra -Werror -c $< -o $@
 
 $(LIBFT): $(LIBFT_DIR)/*.c
+	@if  [ ! -d obj/libft ]; then \
+		mkdir -p obj/libft; \
+	fi
 	@make -C $(LIBFT_DIR)
 	@echo "$(RED)$(BOLD)Libft compiled.$(RESET)"
 	@cp $(LIBFT_DIR)/libft.a $(LIBFT)
