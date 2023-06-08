@@ -1,3 +1,7 @@
+
+![image](https://github.com/xhelp00/so_long/assets/111277585/8a9f13ae-f9e0-4c09-8beb-44fd2aedfbf9)
+
+
 HOW TO make MLX42 library working (spec 42Prague) 
 
 This might be handy in case you decide to use MLX42 in your project (so_long or FdF or fract-ol or any other)
