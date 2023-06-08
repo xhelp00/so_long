@@ -1,7 +1,39 @@
 
 ![image](https://github.com/xhelp00/so_long/assets/111277585/8a9f13ae-f9e0-4c09-8beb-44fd2aedfbf9)
 
+The Game
+- The player’s goal is to collect every collectible present on the map, then escape chosing the shortest possible route.
+- The W, A, S, and D keys (or arrow keys) must be used to move the main character.
+- The player should be able to move in these 4 directions: up, down, left, right.
+- The player should not be able to move into walls.
+- At every move, the current number of movements must be displayed in the shell.
+- You have to use a 2D view (top-down or profile).
+- The game doesn’t have to be real time.
 
+Maps
+- The map has to be constructed with 3 components: walls, collectibles, and free space.
+- The map can be composed of only these 5 characters:
+	- 0 for an empty space,
+	- 1 for a wall,
+	- C for a collectible,
+	- E for a map exit,
+	- P for the player’s starting position.
+- The map must contain 1 exit, at least 1 collectible, and 1 starting position to be valid.
+- Here is a simple valid map:
+
+![image](https://github.com/xhelp00/so_long/assets/111277585/ee48b858-22cd-40bb-ae7d-d74b83eff845)
+- The map must be rectangular.
+- The map must be closed/surrounded by walls. If it’s not, the program must return an error.
+- You have to check if there’s a valid path in the map.
+- You must be able to parse any kind of map, as long as it respects the above rules.
+- Map file has to be *.ber 
+
+Bonus
+- Make the player lose when they touch an enemy patrol.
+- Add some sprite animation.
+- Display the movement count directly on screen instead of writing it in the shell.
+
+***********************************************
 HOW TO make MLX42 library working (spec 42Prague) 
 
 This might be handy in case you decide to use MLX42 in your project (so_long or FdF or fract-ol or any other)
